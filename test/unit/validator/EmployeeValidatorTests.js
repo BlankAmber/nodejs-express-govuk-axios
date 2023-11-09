@@ -57,6 +57,25 @@ describe('EmployeeValidator', function () {
 
     This should pass without code changes
      */
+    it('should return error when bank number is less than 8 characters', () => {
+      let employee = {
+          salary: "30000",
+          fname: "Mocha",
+          lname: "Chai",
+          email: "test@email.com",
+          address: "address",
+          address2: "address2",
+          city: "city",
+          county: "county",
+          postalCode: "postalCode",
+          country: "country",
+          phoneNo: "01234567890",
+          bankNo: "1234567",
+          nin: "12345678"
+      }
+
+      expect(employeeValidator.validateEmployee(employee)).to.equal("Invalid bank number")
+    })
 
     /*
     Unit Test Exercise 2
@@ -69,6 +88,25 @@ describe('EmployeeValidator', function () {
 
     This should pass without code changes
      */
+    it('should return error when bank number is more than 8 characters', () => {
+      let employee = {
+          salary: "30000",
+          fname: "Mocha",
+          lname: "Chai",
+          email: "test@email.com",
+          address: "address",
+          address2: "address2",
+          city: "city",
+          county: "county",
+          postalCode: "postalCode",
+          country: "country",
+          phoneNo: "01234567890",
+          bankNo: "123456789",
+          nin: "12345678"
+      }
+
+      expect(employeeValidator.validateEmployee(employee)).to.equal("Invalid bank number")
+    })
 
     /*
     Unit Test Exercise 3
@@ -81,6 +119,25 @@ describe('EmployeeValidator', function () {
 
     This should fail, make code changes to make this test pass
      */
+    it('should return error when first name is more than 50 characters', () => {
+      let employee = {
+          salary: "30000",
+          fname: "123456789012345678901234567890123456789012345678901",
+          lname: "Chai",
+          email: "test@email.com",
+          address: "address",
+          address2: "address2",
+          city: "city",
+          county: "county",
+          postalCode: "postalCode",
+          country: "country",
+          phoneNo: "01234567890",
+          bankNo: "12345678",
+          nin: "12345678"
+      }
+
+      expect(employeeValidator.validateEmployee(employee)).to.equal("Invalid first name")
+    })
 
     /*
     Unit Test Exercise 4
@@ -93,6 +150,25 @@ describe('EmployeeValidator', function () {
 
     This should fail, make code changes to make this test pass
      */
+    it('should return error when last name is more than 50 characters', () => {
+      let employee = {
+          salary: "30000",
+          fname: "Mocha",
+          lname: "123456789012345678901234567890123456789012345678901",
+          email: "test@email.com",
+          address: "address",
+          address2: "address2",
+          city: "city",
+          county: "county",
+          postalCode: "postalCode",
+          country: "country",
+          phoneNo: "01234567890",
+          bankNo: "12345678",
+          nin: "12345678"
+      }
+
+      expect(employeeValidator.validateEmployee(employee)).to.equal("Invalid last name")
+    })
 
     /*
     Unit Test Exercise 5
@@ -105,6 +181,25 @@ describe('EmployeeValidator', function () {
 
     This should fail, make code changes to make this test pass
      */
+    it('should return error when nin is more than 8 characters', () => {
+      let employee = {
+          salary: "30000",
+          fname: "Mocha",
+          lname: "Chai",
+          email: "test@email.com",
+          address: "address",
+          address2: "address2",
+          city: "city",
+          county: "county",
+          postalCode: "postalCode",
+          country: "country",
+          phoneNo: "01234567890",
+          bankNo: "12345678",
+          nin: "123456789"
+      }
+
+      expect(employeeValidator.validateEmployee(employee)).to.equal("Invalid nin")
+    })
 
     /*
     Unit Test Exercise 6
@@ -117,6 +212,25 @@ describe('EmployeeValidator', function () {
 
     This should fail, make code changes to make this test pass
      */
+    it('should return error when nin is less than 8 characters', () => {
+      let employee = {
+          salary: "30000",
+          fname: "Mocha",
+          lname: "Chai",
+          email: "test@email.com",
+          address: "address",
+          address2: "address2",
+          city: "city",
+          county: "county",
+          postalCode: "postalCode",
+          country: "country",
+          phoneNo: "01234567890",
+          bankNo: "12345678",
+          nin: "1234567"
+      }
+
+      expect(employeeValidator.validateEmployee(employee)).to.equal("Invalid nin")
+    })
 
     /*
     Unit Test Exercise 7
@@ -129,5 +243,24 @@ describe('EmployeeValidator', function () {
 
     This should pass without code changes
      */
+    it('should return error when salary is less than 20000', () => {
+      let employee = {
+          salary: "19999",
+          fname: "Mocha",
+          lname: "Chai",
+          email: "test@email.com",
+          address: "address",
+          address2: "address2",
+          city: "city",
+          county: "county",
+          postalCode: "postalCode",
+          country: "country",
+          phoneNo: "01234567890",
+          bankNo: "12345678",
+          nin: "12345678"
+      }
+
+      expect(employeeValidator.validateEmployee(employee)).to.equal("Salary must be at least £20,000")
+    })
     })
   })

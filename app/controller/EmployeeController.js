@@ -3,6 +3,7 @@ const router = express.Router()
 
 const EmployeeService = require('../service/EmployeeService');
 const EmployeeValidator = require('../validator/EmployeeValidator');
+const employeeValidator = new EmployeeValidator()
 
 router.get('/', async (req, res) => {     
     res.render('employee-home') 
@@ -34,7 +35,7 @@ router.get('/insert-employee', (req, res) => {
 });
 
 router.post('/insert-employee', async (req, res) => {
-    let error = EmployeeValidator.validateEmployee(req.body)
+    let error = employeeValidator.validateEmployee(req.body)
 
     console.log(error)
 

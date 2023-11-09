@@ -12,6 +12,18 @@ module.exports = class EmployeeValidator {
             return "Invalid bank number"
         }
 
+        if (employee.fname.length > 50) {
+            return "Invalid first name"
+        }
+
+        if (employee.lname.length > 50) {
+            return "Invalid last name"
+        }
+
+        if (employee.nin.length != 8) {
+            return "Invalid nin"
+        }
+
         return null
     }
 }

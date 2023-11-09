@@ -9,6 +9,7 @@ const router = govukPrototypeKit.requests.setupRouter()
 // Add your routes here
 const EmployeeService = require('./service/EmployeeService');
 const EmployeeValidator = require('./validator/EmployeeValidator');
+const employeeValidator = new EmployeeValidator();
 
 router.get('/', async (req, res) => {     
     res.render('employee-home') 
@@ -32,7 +33,12 @@ router.get('/employees', async (req, res) => {
 });
 
 router.get('/employees/:id', async (req, res) => {     
-    res.render('list-employee', { employee: await EmployeeService.getEmployee(req.params.id) } ) 
+    try {
+        let employee = await EmployeeService.getEmployee(req.params.id);
+        res.render('list-employee', { employee: employee } )
+    } catch (e) {
+        res.render('list-employee', { employee: null } )
+    }
 });
 
 router.get('/insert-employee', (req, res) => { 
@@ -40,7 +46,7 @@ router.get('/insert-employee', (req, res) => {
 });
 
 router.post('/insert-employee', async (req, res) => {
-    let error = EmployeeValidator.validateEmployee(req.body)
+    let error = employeeValidator.validateEmployee(req.body)
 
     console.log(error)
 
